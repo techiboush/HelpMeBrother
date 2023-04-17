@@ -16,6 +16,7 @@ public interface PcRepo extends CrudRepository<Pc, Integer> {
 //    select model, speed, hd from pc
 //    where (cd = '12x' or cd = '24x') and price < 600
 
-    List<Pc> findAllByCdInAndPriceLassThen(List<String> cdes, Double price);
+    @Query("select Pc from Pc where Pc.cd IN :cdes and Pc.price < :price")
+    List<Pc> findAllByCdInAndPriceLassThen(@Param("cdes")List<String> cdes,@Param("price") Double price);
 
 }
