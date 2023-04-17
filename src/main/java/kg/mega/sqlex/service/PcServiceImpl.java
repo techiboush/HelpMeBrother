@@ -6,6 +6,8 @@ import kg.mega.sqlex.models.entity.Pc;
 import kg.mega.sqlex.models.mapper.PcMapper;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,7 +35,7 @@ public class PcServiceImpl implements PcService {
 
     @Override
     public List<ModelSpeedHd> findModelSpeedHdByCdAndPrice(List<String> cdes, Double price) {
-        List<Pc> pcs = pcRepo.findAllByCdInAndPriceLassThen(cdes, price);
+        List<Pc> pcs = pcRepo.findAllByCdInAndPriceIsLessThan(cdes, price);
 
         List<ModelSpeedHd> modelSpeedHds = pcs
                 .stream()

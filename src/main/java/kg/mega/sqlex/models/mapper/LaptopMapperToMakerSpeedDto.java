@@ -8,11 +8,8 @@ import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 @Mapper
-public interface LaptopMapper {
-    LaptopMapper INSTANCE = Mappers.getMapper(LaptopMapper.class);
-
-    @Mapping(target = "model", source = "product.model")
-    ModelRamScreenLaptopDto mapperToModelRamScreenLaptopDto(Laptop laptop);
+public interface LaptopMapperToMakerSpeedDto {
+    LaptopMapperToMakerSpeedDto INSTANCE = Mappers.getMapper(LaptopMapperToMakerSpeedDto.class);
 
     @Mapping(target = "maker", source = "product.maker")
     MakerSpeedLaptop mapperToMakerSpeedLaptopDto(Laptop laptop);

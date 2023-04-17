@@ -1,5 +1,6 @@
 package kg.mega.sqlex.controller;
 
+import kg.mega.sqlex.models.dto.MakerSpeedLaptop;
 import kg.mega.sqlex.models.dto.ModelRamScreenLaptopDto;
 import kg.mega.sqlex.service.LaptopService;
 import org.springframework.http.ResponseEntity;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.awt.*;
 import java.util.List;
 
 @RestController
@@ -26,6 +28,17 @@ public class LaptopController {
 
         if (!modelRamScreenLaptopDtos.isEmpty()) {
             return ResponseEntity.ok(modelRamScreenLaptopDtos);
+        }
+        else {
+            return ResponseEntity.noContent().build();
+        }
+    }
+
+    @GetMapping("/task6")
+    public ResponseEntity<?> findMakerSpeedByHd(@RequestParam Double hd) {
+        List<MakerSpeedLaptop> makerSpeedLaptops = laptopService.findMakerSpeedByHd(hd);
+        if (!makerSpeedLaptops.isEmpty()) {
+            return ResponseEntity.ok(makerSpeedLaptops);
         }
         else {
             return ResponseEntity.noContent().build();
